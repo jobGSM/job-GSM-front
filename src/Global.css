@@ -5,19 +5,13 @@
   font-weight: normal;
   font-style: normal;
 }
-html,
-body {
-  font-family: "ONE-Mobile-Title";
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 button {
   font-family: "ONE-Mobile-Title";
 }
 
 * {
+  font-family: "ONE-Mobile-Title";
   margin: 0;
   padding: 0;
   box-sizing: border-box;

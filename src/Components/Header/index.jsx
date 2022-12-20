@@ -1,28 +1,46 @@
 import * as S from "./style";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [input, setInput] = useState("");
+  const Navigate = useNavigate();
 
-  const dlwjddn = () => {
-    console.log("sex");
-  };
+  const [input, setInput] = useState("");
 
   return (
     <S.Container>
       <S.Vontainer>
-        <S.LogoTitle>잡쥐</S.LogoTitle>
-        <S.SearchInput
-          placeholder="찾으시는 심부름이 있나요?"
-          onChange={(e) => {
-            setInput(e.target.value);
-            console.log(input);
-          }}
-          onKeyPress={(event) => if(event.keyCode===13)}
-        />
+        <S.LogoWrap>
+          <S.LogoTitle
+            onClick={() => {
+              Navigate("/");
+            }}
+          >
+            잡쥐
+          </S.LogoTitle>
+          <S.SearchInput
+            placeholder="찾으시는 공고가 있으신가요?"
+            onChange={(e) => {
+              setInput(e.target.value);
+              console.log(input);
+            }}
+          />
+        </S.LogoWrap>
         <S.ButtonWrap>
-          <S.JoinButton>로그인</S.JoinButton>
-          <S.JoinButton>회원가입</S.JoinButton>
+          <S.JoinButton
+            onClick={() => {
+              Navigate("/SignIn");
+            }}
+          >
+            로그인
+          </S.JoinButton>
+          <S.JoinButton
+            onClick={() => {
+              Navigate("/SignUp");
+            }}
+          >
+            회원가입
+          </S.JoinButton>
         </S.ButtonWrap>
       </S.Vontainer>
     </S.Container>

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 6vw;
+  height: 5vw;
   border-bottom: 5px solid #00a8ff;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
+  width: 100vw;
 `;
 
 export const Vontainer = styled.div`
@@ -32,13 +33,13 @@ export const ButtonWrap = styled.div`
 export const JoinButton = styled.button`
   margin: 0;
   padding: 0;
-  font-size: 20px;
+  font-size: 25px;
   width: 100px;
   background: none;
   border: none;
   padding-bottom: 3px;
+  cursor: pointer;
   &:hover {
-    transition: ease-in-out 0.2s;
     padding: 0;
     border-bottom: 3px solid #00a8ff;
   }
