@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 5vw;
-  border-bottom: 5px solid #00a8ff;
+  border-bottom: 2px solid #dcdcdc;
   display: flex;
   text-align: center;
   align-items: center;

@@ -46,6 +46,8 @@ export const UserInput = styled.input`
   margin-bottom: 30px;
   border: none;
   font-size: 16px;
+  font-family: sans-serif;
+
   border-bottom: 1px solid #000;
   &:focus {
     outline: none;
@@ -58,7 +60,7 @@ export const UserInputPassword = styled.input`
   height: 2vw;
   font-size: 16px;
   font-family: sans-serif;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 
   border: none;
   border-bottom: 1px solid #000;
@@ -140,4 +142,9 @@ export const Select = styled.select`
 
 export const Grade = styled.option`
   font-size: 20px;
+`;
+
+export const Comparetitle = styled.p`
+  font-size: 10px;
+  color: red;
 `;

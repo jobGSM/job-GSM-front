@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const SignInBox = styled.div`
   align-items: center;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
   width: 25vw;
   height: 35vw;
@@ -30,6 +30,7 @@ export const SignInBox = styled.div`
 export const SignUpTitle = styled.p`
   font-size: 30px;
   padding-top: 25px;
+  margin-bottom: 40px;
 `;
 
 export const InputWrap = styled.div`
@@ -42,6 +43,8 @@ export const UserInput = styled.input`
   height: 2vw;
   margin-bottom: 30px;
   border: none;
+  font-family: sans-serif;
+
   font-size: 16px;
   border-bottom: 1px solid #000;
   &:focus {
@@ -74,5 +77,12 @@ export const SignUpButton = styled.button`
   color: #fff;
   border: none;
   border-radius: 20px;
+  cursor: pointer;
+`;
+
+export const Wjdalstj = styled.p`
+  padding-top: 14px;
+  color: #777777;
+  font-size: 15px;
   cursor: pointer;
 `;
