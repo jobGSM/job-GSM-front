@@ -8,20 +8,21 @@ const SignUp = () => {
   const [email, setId] = useState("");
   const [password, setPassword] = useState("");
   const [grade, setGrade] = useState("");
+  const [data, setData] = useState();
 
   const userData = {
-    name: name,
-    email: email,
-    password: password,
-    grade: grade,
+    name: "김형록",
+    email: "이정우",
+    password: "민도현",
+    grade: "하제우",
   };
 
-  const request = () => {
-    axios({
-      url: "https://test/api/cafe/list/today", // 통신할 웹문서
-      method: "post", // 통신할 방식
-      data: userData,
+  const request = async () => {
+    const { data } = await axios({
+      url: "http://10.82.18.0:3000/test", // 통신할 웹문서
+      method: "get", // 통신할 방식
     });
+    setData(data);
   };
 
   return (
@@ -70,9 +71,10 @@ const SignUp = () => {
                 <S.Grade>선생님</S.Grade>
               </S.Select>
               <S.SignUpButton
-                onClick={() => {
-                  console.log(userData);
-                }}
+                // onClick={() => {
+                //   console.log(userData);
+                // }}
+                onClick={request}
               >
                 가입
               </S.SignUpButton>

@@ -64,3 +64,15 @@ export const UserInputPassword = styled.input`
     border-bottom: 3px solid #00a8ff;
   }
 `;
+
+export const SignUpButton = styled.button`
+  width: 18vw;
+  height: 4vw;
+  font-size: 20px;
+  margin-top: 30px;
+  background-color: #00a8ff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+`;
