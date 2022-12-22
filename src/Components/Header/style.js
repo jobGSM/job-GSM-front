@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 5vw;
-  border-bottom: 2px solid #dcdcdc;
+  border-bottom: 2px solid #00a8ff;
   display: flex;
   text-align: center;
   align-items: center;
@@ -22,10 +22,10 @@ export const LogoTitle = styled.p`
   font-size: 40px;
   cursor: pointer;
   font-weight: 700;
-`;
+`
 
 export const ButtonWrap = styled.div`
-  width: 250px;
+  width: 100px;
   display: flex;
   justify-content: space-between;
 `;

@@ -3,8 +3,10 @@ import { Header } from "../../Components";
 const Main = () => {
   return (
     <div>
-      <Header></Header>
-      <S.Chlwkddn></S.Chlwkddn>;
+      <S.Bumo>
+        <Header></Header>
+        <S.Container></S.Container>
+      </S.Bumo>
     </div>
   );
 };

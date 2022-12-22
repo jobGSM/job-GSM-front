@@ -8,40 +8,49 @@ const SignUp = () => {
   const [email, setId] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  const [grade, setGrade] = useState("");
+  const [grade, setGrade] = useState("1학년");
   const [data, setData] = useState();
-  const [compare, setCompare] = useState();
+  const [compare, setCompare] = useState(null);
 
   const userData = {
-    name: name,
-    email: email,
-    password: password,
-    grade: grade,
+    name,
+    email,
+    password,
+    grade,
   };
 
   const request = async () => {
     await axios({
-      url: "http://10.82.18.227:3000/signup", // 통신할 웹문서
-      method: "get", // 통신할 방식
+      url: "http://10.82.18.191:8080/signup", // 통신할 웹문서
+      method: "post", // 통신할 방식
+      data: userData,
     });
-    setData(data);
   };
 
   const comparePassword = () => {
-    if (password === checkPassword) {
-      setCompare(true);
+    if (!checkPassword) {
+      return setCompare(null);
+    } else if (password === checkPassword) {
+      return setCompare(true);
     } else {
-      setCompare(false);
+      return setCompare(false);
     }
   };
 
-  const resultCompare = () => {
-    if (compare === true) {
-      return <S.Comparetitle>일치</S.Comparetitle>;
-    } else {
-      return <S.Comparetitle>불일치</S.Comparetitle>;
+  const compareResult = () => {
+    if (compare === null) {
+      return;
+    } else if (compare === true) {
+      return <S.Truetitle>일치</S.Truetitle>;
+    } else if (compare === false) {
+      return <S.Falsetitle>불일치</S.Falsetitle>;
     }
   };
+
+  useEffect(() => {
+    console.log(compare);
+    comparePassword();
+  }, [checkPassword]);
 
   return (
     <div>
@@ -78,25 +87,33 @@ const SignUp = () => {
                 type="password"
                 onChange={(e) => {
                   setCheckPassword(e.target.value);
-                  comparePassword();
+                  console.log(compare);
                 }}
               ></S.UserInput>
-
+              {compareResult()}
               <S.ClassTitle>본인의 학년 / 직급을 선택해주세요 .</S.ClassTitle>
               <S.Select
                 onChange={(e) => {
                   setGrade(e.target.value);
                 }}
               >
-                <S.Grade>1 학년</S.Grade>
-                <S.Grade>2 학년</S.Grade>
-                <S.Grade>3 학년</S.Grade>
+                <S.Grade>1학년</S.Grade>
+                <S.Grade>2학년</S.Grade>
+                <S.Grade>3학년</S.Grade>
                 <S.Grade>선생님</S.Grade>
               </S.Select>
               <S.SignUpButton
                 onClick={() => {
-                  window.location.href = "/";
-                  console.log(userData);
+                  if (compare === false || compare === null) {
+                    alert("비밀번호를 다시 확인해주세요.");
+                  } else {
+                    alert("회원가입 성공!");
+                    console.log(compare);
+                    console.log(userData);
+                    request();
+                  }
+                  // window.location.href = "/";
+                  // alert("회원가입 성공! 로그인을 해주세요.");
                 }}
               >
                 가입

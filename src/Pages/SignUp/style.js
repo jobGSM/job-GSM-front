@@ -144,7 +144,12 @@ export const Grade = styled.option`
   font-size: 20px;
 `;
 
-export const Comparetitle = styled.p`
-  font-size: 10px;
+export const Falsetitle = styled.p`
+  font-size: 15px;
   color: red;
+`;
+
+export const Truetitle = styled.p`
+  font-size: 15px;
+  color: green;
 `;

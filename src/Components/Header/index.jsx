@@ -34,13 +34,6 @@ const Header = () => {
           >
             로그인
           </S.JoinButton>
-          <S.JoinButton
-            onClick={() => {
-              Navigate("/SignUp");
-            }}
-          >
-            회원가입
-          </S.JoinButton>
         </S.ButtonWrap>
       </S.Vontainer>
     </S.Container>
