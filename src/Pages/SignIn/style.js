@@ -1,30 +1,20 @@
 import styled from "styled-components";
 
-export const Bumo = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-export const Container = styled.div`
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
+export const Bumo = styled.div``;
 
 export const SignInBox = styled.div`
+  display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  display: flex;
   width: 25vw;
   height: 35vw;
   border: 1px solid #747474;
   border-radius: 15px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const SignUpTitle = styled.p`
@@ -34,8 +24,9 @@ export const SignUpTitle = styled.p`
 `;
 
 export const InputWrap = styled.div`
-  width: 100%;
-  height: 21vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export const UserInput = styled.input`
@@ -80,7 +71,8 @@ export const SignUpButton = styled.button`
   cursor: pointer;
 `;
 
-export const Wjdalstj = styled.p`
+export const MoveSignUp = styled.p`
+  text-align: center;
   padding-top: 14px;
   color: #777777;
   font-size: 15px;

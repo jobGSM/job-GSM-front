@@ -53,76 +53,74 @@ const SignUp = () => {
   }, [checkPassword]);
 
   return (
-    <div>
+    <>
+      <Header></Header>
       <S.Bumo>
-        <Header></Header>
-        <S.Container>
-          <S.SignUpBox>
-            <S.SignUpTitle>회원가입</S.SignUpTitle>
-            <S.UserInformaitionWrap>
-              <S.UserInput
-                placeholder="이름을 입력해주세요"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              ></S.UserInput>
-              <S.UserInput
-                placeholder="이메일을 입력해주세요"
-                value={email}
-                onChange={(e) => {
-                  setId(e.target.value);
-                }}
-              ></S.UserInput>
-              <S.UserInput
-                placeholder="비밀번호를 입력해주세요"
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              ></S.UserInput>
-              <S.UserInput
-                placeholder="비밀번호 확인"
-                type="password"
-                onChange={(e) => {
-                  setCheckPassword(e.target.value);
+        <S.SignUpBox>
+          <S.SignUpTitle>회원가입</S.SignUpTitle>
+          <S.UserInformaitionWrap>
+            <S.UserInput
+              placeholder="이름을 입력해주세요"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            ></S.UserInput>
+            <S.UserInput
+              placeholder="이메일을 입력해주세요"
+              value={email}
+              onChange={(e) => {
+                setId(e.target.value);
+              }}
+            ></S.UserInput>
+            <S.UserInput
+              placeholder="비밀번호를 입력해주세요"
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            ></S.UserInput>
+            <S.UserInput
+              placeholder="비밀번호 확인"
+              type="password"
+              onChange={(e) => {
+                setCheckPassword(e.target.value);
+                console.log(compare);
+              }}
+            ></S.UserInput>
+            {compareResult()}
+            <S.ClassTitle>본인의 학년 / 직급을 선택해주세요 .</S.ClassTitle>
+            <S.Select
+              onChange={(e) => {
+                setGrade(e.target.value);
+              }}
+            >
+              <S.Grade>1학년</S.Grade>
+              <S.Grade>2학년</S.Grade>
+              <S.Grade>3학년</S.Grade>
+              <S.Grade>선생님</S.Grade>
+            </S.Select>
+            <S.SignUpButton
+              onClick={() => {
+                if (compare === false || compare === null) {
+                  alert("비밀번호를 다시 확인해주세요.");
+                } else {
+                  alert("회원가입 성공!");
                   console.log(compare);
-                }}
-              ></S.UserInput>
-              {compareResult()}
-              <S.ClassTitle>본인의 학년 / 직급을 선택해주세요 .</S.ClassTitle>
-              <S.Select
-                onChange={(e) => {
-                  setGrade(e.target.value);
-                }}
-              >
-                <S.Grade>1학년</S.Grade>
-                <S.Grade>2학년</S.Grade>
-                <S.Grade>3학년</S.Grade>
-                <S.Grade>선생님</S.Grade>
-              </S.Select>
-              <S.SignUpButton
-                onClick={() => {
-                  if (compare === false || compare === null) {
-                    alert("비밀번호를 다시 확인해주세요.");
-                  } else {
-                    alert("회원가입 성공!");
-                    console.log(compare);
-                    console.log(userData);
-                    request();
-                  }
-                  // window.location.href = "/";
-                  // alert("회원가입 성공! 로그인을 해주세요.");
-                }}
-              >
-                가입
-              </S.SignUpButton>
-            </S.UserInformaitionWrap>
-          </S.SignUpBox>
-        </S.Container>
+                  console.log(userData);
+                  request();
+                }
+                // window.location.href = "/";
+                // alert("회원가입 성공! 로그인을 해주세요.");
+              }}
+            >
+              가입
+            </S.SignUpButton>
+          </S.UserInformaitionWrap>
+        </S.SignUpBox>
       </S.Bumo>
-    </div>
+    </>
   );
 };
 

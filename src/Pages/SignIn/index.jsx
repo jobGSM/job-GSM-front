@@ -23,45 +23,43 @@ const SignIn = () => {
   };
   return (
     <div>
+      <Header />
       <S.Bumo>
-        <Header />
-        <S.Container>
-          <S.SignInBox>
-            <div>
-              <S.SignUpTitle>로그인</S.SignUpTitle>
-            </div>
-            <S.InputWrap>
-              <S.UserInput
-                placeholder="이메일을 입력해주세요."
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              ></S.UserInput>
-              <S.UserInputPassword
-                placeholder="비밀번호를 입력해주세요."
-                type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              ></S.UserInputPassword>
-              <S.SignUpButton
-                onClick={() => {
-                  console.log(loginData);
-                  request();
-                }}
-              >
-                잡쥐 시작하기
-              </S.SignUpButton>
-              <S.Wjdalstj
-                onClick={() => {
-                  Navigate("/signUp");
-                }}
-              >
-                아직 회원이 아니신가요?
-              </S.Wjdalstj>
-            </S.InputWrap>
-          </S.SignInBox>
-        </S.Container>
+        <S.SignInBox>
+          <div>
+            <S.SignUpTitle>로그인</S.SignUpTitle>
+          </div>
+          <S.InputWrap>
+            <S.UserInput
+              placeholder="이메일을 입력해주세요."
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            ></S.UserInput>
+            <S.UserInputPassword
+              placeholder="비밀번호를 입력해주세요."
+              type="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            ></S.UserInputPassword>
+            <S.SignUpButton
+              onClick={() => {
+                console.log(loginData);
+                request();
+              }}
+            >
+              잡쥐 시작하기
+            </S.SignUpButton>
+            <S.MoveSignUp
+              onClick={() => {
+                Navigate("/signUp");
+              }}
+            >
+              아직 회원이 아니신가요?
+            </S.MoveSignUp>
+          </S.InputWrap>
+        </S.SignInBox>
       </S.Bumo>
     </div>
   );

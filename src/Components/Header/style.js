@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  background-color: #fff;
+
   height: 5vw;
-  border-bottom: 2px solid #00a8ff;
+
   display: flex;
   text-align: center;
   align-items: center;
@@ -22,7 +24,7 @@ export const LogoTitle = styled.p`
   font-size: 40px;
   cursor: pointer;
   font-weight: 700;
-`
+`;
 
 export const ButtonWrap = styled.div`
   width: 100px;

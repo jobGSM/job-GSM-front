@@ -1,20 +1,7 @@
 import styled from "styled-components";
 
-export const Bumo = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+export const Bumo = styled.div``;
 
-export const Container = styled.div`
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
 export const SignUpBox = styled.div`
   align-items: center;
   flex-direction: column;
@@ -23,6 +10,10 @@ export const SignUpBox = styled.div`
   height: 35vw;
   border: 1px solid #747474;
   border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const SignUpTitle = styled.p`
