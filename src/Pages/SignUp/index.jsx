@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Header } from "../../Components";
 import * as S from "./style";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -54,7 +55,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <S.Bumo>
         <S.SignUpBox>
           <S.SignUpTitle>회원가입</S.SignUpTitle>
@@ -104,13 +105,14 @@ const SignUp = () => {
             <S.SignUpButton
               onClick={() => {
                 if (compare === false || compare === null) {
-                  alert("비밀번호를 다시 확인해주세요.");
+                  toast.error("비밀번호를 다시 확인해주세요.");
                 } else {
-                  alert("회원가입 성공!");
+                  toast.success("로그인 성공");
                   console.log(compare);
                   console.log(userData);
                   request();
                 }
+
                 // window.location.href = "/";
                 // alert("회원가입 성공! 로그인을 해주세요.");
               }}
