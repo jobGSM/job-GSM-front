@@ -36,24 +36,9 @@ export const UserInput = styled.input`
   height: 2vw;
   margin-bottom: 30px;
   border: none;
-  font-size: 16px;
+  font-size: 20px;
   font-family: sans-serif;
 
-  border-bottom: 1px solid #000;
-  &:focus {
-    outline: none;
-    border-bottom: 3px solid #00a8ff;
-  }
-`;
-
-export const UserInputPassword = styled.input`
-  width: 18vw;
-  height: 2vw;
-  font-size: 16px;
-  font-family: sans-serif;
-  margin-bottom: 40px;
-
-  border: none;
   border-bottom: 1px solid #000;
   &:focus {
     outline: none;
