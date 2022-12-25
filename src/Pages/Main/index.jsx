@@ -17,7 +17,7 @@ const Main = () => {
                 <S.chlwkddn padding="20px" color="#fff">
                   좋은 인재를{" "}
                 </S.chlwkddn>
-                <S.chlwkddn color="#75D701"> Pick</S.chlwkddn>
+                <S.chlwkddn color="#94FF92"> Pick</S.chlwkddn>
                 <S.chlwkddn color="#fff">하세요 .</S.chlwkddn>
               </S.IntroTitleWrap>
               <S.IntroLast>

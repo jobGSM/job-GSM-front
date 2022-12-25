@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #fff;
-
+  box-sizing: border-box;
+  border-bottom: 3px solid #00a8ff;
   height: 5vw;
-
   display: flex;
   text-align: center;
   align-items: center;
