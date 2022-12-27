@@ -32,7 +32,7 @@ export const UserInformaitionWrap = styled.div`
 `;
 
 export const UserInput = styled.input`
-  width: 18vw;
+  width: ${(props) => props.width};
   height: 2vw;
   margin-bottom: 30px;
   border: none;
@@ -128,4 +128,55 @@ export const Falsetitle = styled.p`
 export const Truetitle = styled.p`
   font-size: 15px;
   color: green;
+`;
+
+export const EmailCheckButton = styled.button`
+  width: 2vw;
+  height: 2vw;
+`;
+
+export const Sex = styled.div`
+  display: flex;
+  width: 18vw;
+  justify-content: space-between;
+`;
+
+export const CheckEmail = styled.div`
+  width: 400px;
+  height: 200px;
+  z-index: 99999;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid #00a8ff;
+  border-radius: 30px;
+  background-color: #fff;
+`;
+
+export const CheckEmailTitle = styled.p`
+  font-size: 30px;
+`;
+
+export const CheckEmailCode = styled.input`
+  margin-top: 20px;
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  margin-bottom: 20px;
+`;
+
+export const CheckEmailButton = styled.button`
+  width: 150px;
+  height: 30px;
+`;
+
+export const EmailDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;

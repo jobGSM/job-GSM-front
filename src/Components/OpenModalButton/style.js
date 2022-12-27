@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const AddJobButton = styled.button`
   position: fixed;
-  bottom: 0;
+  bottom: 20px;
   right: 20%;
   background-color: #00a8ff;
-  width: 50px;
-  height: 50px;
-  font-size: 30px;
+  width: 70px;
+  height: 70px;
+  font-size: 40px;
   color: white;
   border: none;
-  border-radius: 30px;
+  border-radius: 50px;
   cursor: pointer;
 `;

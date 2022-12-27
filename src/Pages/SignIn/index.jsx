@@ -1,12 +1,16 @@
 import * as S from "./style";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { Header } from "../../Components";
 import { useNavigate } from "react-router-dom";
+import { AnswerContext } from "../../Store/Answer";
+
 const SignIn = () => {
   const Navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userSave, setUserSave] = useState(false);
+  const { setAnswer } = useContext(AnswerContext);
 
   const loginData = {
     email,
@@ -15,15 +19,17 @@ const SignIn = () => {
 
   const request = async () => {
     const answer = await axios({
-      url: "http://10.82.18.191:8080/login", // 통신할 웹문서
+      url: "http://10.82.17.167:8080/login", // 통신할 웹문서
       method: "post", // 통신할 방식
       data: loginData,
     });
     console.log(answer);
+    setAnswer(answer);
   };
+
   return (
     <div>
-      <Header />
+      <Header name="이정우" />
       <S.Bumo>
         <S.SignInBox>
           <div>

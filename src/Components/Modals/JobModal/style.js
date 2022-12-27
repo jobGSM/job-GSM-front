@@ -59,8 +59,9 @@ export const PostJobInfor = styled.div`
 export const JobInforInput = styled.input`
   width: 18vw;
   height: 2vw;
-  font-size: 20px;
-  margin: 25px 0;
+  font-size: ${(props) => props.fontSize};
+  margin-top: 15px;
+  margin-bottom: ${(props) => props.marginBottom};
 `;
 
 export const JobTextarea = styled.textarea`
@@ -77,7 +78,7 @@ export const JobText = styled.p`
 `;
 
 export const PostButton = styled.button`
-  width: 17vw;
+  width: 18vw;
   height: 3vw;
   background-color: #00a8ff;
   font-size: 20px;

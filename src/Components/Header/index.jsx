@@ -1,9 +1,11 @@
 import * as S from "./style";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AnswerContext } from "../../Store/Answer";
 
 const Header = () => {
   const Navigate = useNavigate();
+  const { answer } = useContext(AnswerContext);
 
   const [input, setInput] = useState("");
 
@@ -22,7 +24,6 @@ const Header = () => {
             placeholder="찾으시는 공고가 있으신가요?"
             onChange={(e) => {
               setInput(e.target.value);
-              console.log(input);
             }}
           />
         </S.LogoWrap>
