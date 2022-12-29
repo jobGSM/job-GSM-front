@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AddJobButton = styled.button`
   position: fixed;
   bottom: 20px;
-  right: 20%;
+  right: 25%;
   background-color: #00a8ff;
   width: 70px;
   height: 70px;

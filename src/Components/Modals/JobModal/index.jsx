@@ -1,11 +1,12 @@
 import * as S from "./style";
-import React, { useState } from "react"; // css import
+import React, { useContext, useState } from "react"; // css import
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
 import "./style.css";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { AnswerContext } from "../../../Store/Answer";
 
 const JobModal = ({ setAddJob }) => {
   const [bboardStartDate, setBoardStartDate] = useState(new Date());
@@ -14,10 +15,11 @@ const JobModal = ({ setAddJob }) => {
   const [boardContent, setBoardContent] = useState("");
   const [boardApplicant, setBoardApplicant] = useState();
   const [isInput, setIsInput] = useState(false);
-
+  const boardWriter = localStorage.getItem("name");
+  const boardGrade = localStorage.getItem("grade");
   const boardStartDate = bboardStartDate.toLocaleDateString();
   const boardEndDate = bboardEndDate.toLocaleDateString();
-
+  const { boards, setBoards } = useContext(AnswerContext);
   const request = async () => {
     await axios({
       url: "http://10.82.19.102:8080/board", // 통신할 웹문서
@@ -27,81 +29,41 @@ const JobModal = ({ setAddJob }) => {
   };
 
   const boardInformation = async () => {
-    const dlwjddn = await axios({
+    const { data } = await axios({
       url: "http://10.82.19.102:8080/board/boards", // 통신할 웹문서
       method: "get",
     });
     console.log("하이");
-    console.log(dlwjddn);
+    console.log(data);
+    setBoards(data);
   };
-  const boardWriter = "허여준";
   const postJobData = {
+    boardWriter,
+    boardGrade,
     boardTitle,
     boardContent,
     boardApplicant,
     boardStartDate,
     boardEndDate,
-    boardWriter,
   };
 
   const check = () => {
-    let count = 0;
     if (
-      boardTitle == "" ||
-      boardContent == "" ||
-      bboardEndDate == "" ||
-      bboardStartDate == "" ||
-      boardApplicant == ""
+      boardTitle === "" ||
+      boardContent === "" ||
+      bboardEndDate === "" ||
+      bboardStartDate === "" ||
+      boardApplicant === ""
     ) {
       toast.error("비어있는 칸이 있어요");
     } else {
       toast.success("공고가 성공적으로 올라갔어요.");
       request();
-      boardInformation();
+      setBoards([...boards, postJobData]);
+      setAddJob(false);
     }
-    // else {
-    //   toast.error("제목을 입력해주세요");
-    //   console.log("노입력");
-    // }
-    // if (boardApplicant) {
-    //   count++;
-    //   console.log("인원수 적힘");
-    // } else {
-    //   toast.error("인원수를 적어주세요");
-    // }
-    // if (boardContent) {
-    //   count++;
-    //   console.log("본문 적힘");
-    // } else {
-    //   toast.error("본문을 적어주세요");
-    // }
-    // if (bboardStartDate && bboardEndDate) {
-    //   count++;
-    //   console.log("날짜 성공");
-    // } else {
-    //   toast.error("날짜를 지정해주세요");
-    // }
-    // if (count === 4) {
-
-    //   if (isInput) {
-    //     toast.success("공고가 성공적으로 올라갔어요");
-    //   } else {
-    //     toast.error("응");
-    //   }
-    // }
-    // if (count === 3) {
-    //   setIsInput(true);
-    // if (!isInput) {
-    //   toast.error("날짜를 설정해주세요.");
-    // } else {
-    //   toast.success("등록이 완료되었어요.");
-    //   console.log(postJobData);
-    //   request();
-    //   boardInformation();
-    //   setAddJob(false);
-    // }
-    //}
   };
+  console.log(boardWriter, boardGrade);
   return (
     <>
       <ToastContainer />
@@ -130,6 +92,7 @@ const JobModal = ({ setAddJob }) => {
               placeholder="모집할 인원수 (숫자만 적어주세요)"
               marginBottom="15px"
               fontSize="17px"
+              type="number"
               onChange={(e) => {
                 setBoardApplicant(e.target.value);
               }}
