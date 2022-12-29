@@ -135,7 +135,7 @@ export const EmailCheckButton = styled.button`
   height: 2vw;
 `;
 
-export const Sex = styled.div`
+export const NormalDiv = styled.div`
   display: flex;
   width: 18vw;
   justify-content: space-between;
@@ -179,4 +179,22 @@ export const EmailDiv = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+`;
+
+export const Diiv = styled.div`
+  justify-content: center;
+  justify-content: space-between;
+  width: 220px;
+
+  display: flex;
+`;
+
+export const Bbutton = styled.button`
+  width: 30px;
+  height: 30px;
+  border: none;
+  color: #00a8ff;
+  background-color: #fff;
+  font-size: 30px;
+  cursor: pointer;
 `;

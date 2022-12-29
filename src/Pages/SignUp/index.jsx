@@ -14,6 +14,9 @@ const SignUp = () => {
   const [compare, setCompare] = useState(null);
   const [modal, setModal] = useState(false);
   const [code, setCode] = useState("");
+  const [isButton, setIsButton] = useState(true);
+  let isCheck = null;
+
   let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}"); //이메일 정규식
 
   const userData = {
@@ -33,7 +36,7 @@ const SignUp = () => {
   const Navigate = useNavigate();
   const request = async () => {
     await axios({
-      url: "http://10.82.17.167:8080/signup", // 통신할 웹문서
+      url: "http://10.82.19.102:8080/signup", // 통신할 웹문서
       method: "post", // 통신할 방식
       data: userData,
     });
@@ -41,18 +44,23 @@ const SignUp = () => {
 
   const sendEmail = async () => {
     await axios({
-      url: "http://10.82.17.167:8080/email",
+      url: "http://10.82.19.102:8080/email",
       method: "post",
       data: sendCheckEmail,
     });
   };
 
   const checkEmail = async () => {
-    await axios({
-      url: `${"http://10.82.17.167:8080/email?email="}${email}&authKey=${code}`,
-      method: "head",
+    const { data } = await axios({
+      url: `${"http://10.82.19.102:8080/email/check?email="}${email}&authKey=${code}`,
+      method: "post",
       data: sendCode,
     });
+
+    console.log(sendCode);
+    console.log(data);
+    isCheck = data;
+    isCheckEmailCode();
   };
 
   const comparePassword = () => {
@@ -75,6 +83,18 @@ const SignUp = () => {
     }
   };
 
+  const isCheckEmailCode = () => {
+    if (isCheck.check) {
+      console.log(code);
+      setModal(false);
+      toast.success("인증을 성공했어요.");
+      setIsButton(false);
+      console.log(isCheck.check);
+    } else {
+      toast.error("인증 번호를 다시 확인해주세요.");
+    }
+  };
+
   useEffect(() => {
     console.log(compare);
     comparePassword();
@@ -87,7 +107,16 @@ const SignUp = () => {
         {modal ? (
           <S.CheckEmail>
             <S.EmailDiv>
-              <S.CheckEmailTitle>이메일 인증 창</S.CheckEmailTitle>
+              <S.Diiv>
+                <S.CheckEmailTitle>이메일 인증 창</S.CheckEmailTitle>
+                <S.Bbutton
+                  onClick={() => {
+                    setModal(false);
+                  }}
+                >
+                  x
+                </S.Bbutton>
+              </S.Diiv>
               <S.CheckEmailCode
                 placeholder="이메일 인증코드"
                 onChange={(e) => {
@@ -97,7 +126,6 @@ const SignUp = () => {
               <S.CheckEmailButton
                 onClick={() => {
                   checkEmail();
-                  setModal(false);
                 }}
               >
                 제출
@@ -116,7 +144,7 @@ const SignUp = () => {
                 setName(e.target.value);
               }}
             ></S.UserInput>
-            <S.Sex>
+            <S.NormalDiv>
               <S.UserInput
                 width="15vw"
                 placeholder="이메일을 입력해주세요"
@@ -125,21 +153,22 @@ const SignUp = () => {
                   setId(e.target.value);
                 }}
               ></S.UserInput>
-              <S.EmailCheckButton
-                onClick={() => {
-                  if (regex.test(email) === true) {
-                    toast.success("입력하신 이메일로 인증코드를 보냈어요.");
-                    console.log("sex");
-                    sendEmail();
-                    setModal(true);
-                  } else {
-                    toast.error("이메일을 다시 확인해주세요.");
-                  }
-                }}
-              >
-                인증
-              </S.EmailCheckButton>
-            </S.Sex>
+              {isButton && (
+                <S.EmailCheckButton
+                  onClick={() => {
+                    if (regex.test(email) === true) {
+                      toast.success("입력하신 이메일로 인증코드를 보냈어요.");
+                      sendEmail();
+                      setModal(true);
+                    } else {
+                      toast.error("이메일을 다시 확인해주세요.");
+                    }
+                  }}
+                >
+                  인증
+                </S.EmailCheckButton>
+              )}
+            </S.NormalDiv>
             <S.UserInput
               placeholder="비밀번호를 입력해주세요"
               width="18vw"
@@ -175,7 +204,7 @@ const SignUp = () => {
                 if (compare === false || compare === null) {
                   toast.error("비밀번호를 다시 확인해주세요.");
                 } else {
-                  toast.success("로그인 성공");
+                  toast.success("회원가입 성공");
                   console.log(compare);
                   console.log(userData);
                   request();

@@ -1,5 +1,4 @@
 import { Main, SignIn, SignUp } from "./Pages";
-import { Header } from "./Components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./Global.css";
 import { ToastContainer } from "react-toastify";

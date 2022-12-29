@@ -1,30 +1,49 @@
 import * as S from "./style";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { Header } from "../../Components";
 import { useNavigate } from "react-router-dom";
 import { AnswerContext } from "../../Store/Answer";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const Navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userSave, setUserSave] = useState(false);
-  const { setAnswer } = useContext(AnswerContext);
+  const { setAnswer, setIsHi, setAccessToken, setRefreshToken } =
+    useContext(AnswerContext);
 
   const loginData = {
     email,
     password,
   };
 
+  const isInput = () => {
+    if (email && password) {
+      toast.success("로그인 성공");
+    } else {
+      toast.error("오류");
+    }
+  };
+
   const request = async () => {
-    const answer = await axios({
-      url: "http://10.82.17.167:8080/login", // 통신할 웹문서
+    const { data } = await axios({
+      url: "http://10.82.19.102:8080/login", // 통신할 웹문서
       method: "post", // 통신할 방식
       data: loginData,
+      withCredentials: true,
     });
-    console.log(answer);
-    setAnswer(answer);
+    console.log("hello");
+    console.log(data);
+    localStorage.setItem("accessToken", data.accessToken);
+    localStorage.setItem("refreshToken", data.refreshToken);
+    console.log(
+      localStorage.getItem("accessToken"),
+      localStorage.getItem("refreshToken")
+    );
+    setIsHi(true);
+    isInput();
   };
 
   return (
@@ -50,9 +69,11 @@ const SignIn = () => {
               }}
             ></S.UserInputPassword>
             <S.SignUpButton
-              onClick={() => {
+              onClick={async () => {
                 console.log(loginData);
-                request();
+                await request();
+
+                Navigate("/");
               }}
             >
               잡쥐 시작하기
