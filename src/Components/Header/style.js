@@ -9,7 +9,7 @@ export const Container = styled.div`
   text-align: center;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
 `;
 
 export const Vontainer = styled.div`
@@ -27,7 +27,7 @@ export const LogoTitle = styled.p`
 `;
 
 export const ButtonWrap = styled.div`
-  width: 100px;
+  width: 280px;
   display: flex;
   justify-content: space-between;
 `;
@@ -60,4 +60,18 @@ export const SearchInput = styled.input`
   padding-left: 20px;
   &:focus {
   }
+`;
+
+export const UserName = styled.p`
+  font-size: 25px;
+`;
+
+export const LogOut = styled.button`
+  width: 80px;
+  height: 30px;
+  background-color: #00a8ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
 `;
