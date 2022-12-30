@@ -10,7 +10,6 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
   const [grade, setGrade] = useState("1학년");
-  const [data, setData] = useState();
   const [compare, setCompare] = useState(null);
   const [modal, setModal] = useState(false);
   const [code, setCode] = useState("");
@@ -56,9 +55,6 @@ const SignUp = () => {
       method: "post",
       data: sendCode,
     });
-
-    console.log(sendCode);
-    console.log(data);
     isCheck = data;
     isCheckEmailCode();
   };
@@ -85,18 +81,15 @@ const SignUp = () => {
 
   const isCheckEmailCode = () => {
     if (isCheck.check) {
-      console.log(code);
       setModal(false);
       toast.success("인증을 성공했어요.");
       setIsButton(false);
-      console.log(isCheck.check);
     } else {
       toast.error("인증 번호를 다시 확인해주세요.");
     }
   };
 
   useEffect(() => {
-    console.log(compare);
     comparePassword();
   }, [checkPassword]);
 
@@ -118,7 +111,7 @@ const SignUp = () => {
                 </S.Bbutton>
               </S.Diiv>
               <S.CheckEmailCode
-                placeholder="이메일 인증코드"
+                placeholder="인증코드"
                 onChange={(e) => {
                   setCode(e.target.value);
                 }}
@@ -157,7 +150,7 @@ const SignUp = () => {
                 <S.EmailCheckButton
                   onClick={() => {
                     if (regex.test(email) === true) {
-                      toast.success("입력하신 이메일로 인증코드를 보냈어요.");
+                      toast.success("인증코드를 보냈어요.");
                       sendEmail();
                       setModal(true);
                     } else {
@@ -184,7 +177,6 @@ const SignUp = () => {
               type="password"
               onChange={(e) => {
                 setCheckPassword(e.target.value);
-                console.log(compare);
               }}
             ></S.UserInput>
             {compareResult()}
@@ -205,8 +197,6 @@ const SignUp = () => {
                   toast.error("비밀번호를 다시 확인해주세요.");
                 } else {
                   toast.success("회원가입 성공");
-                  console.log(compare);
-                  console.log(userData);
                   request();
                   Navigate("/signin");
                 }
@@ -215,7 +205,7 @@ const SignUp = () => {
                 // alert("회원가입 성공! 로그인을 해주세요.");
               }}
             >
-              가입
+              잡쥐 시작하기
             </S.SignUpButton>
           </S.UserInformaitionWrap>
         </S.SignUpBox>

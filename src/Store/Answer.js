@@ -7,6 +7,8 @@ const UserStore = (prop) => {
   const [isHi, setIsHi] = useState(false);
   const [boards, setBoards] = useState([]);
   const [index, setIndex] = useState();
+  const [isLogin, setIsLogin] = useState(false);
+  const [userInfo, setUserInfo] = useState();
 
   return (
     <AnswerContext.Provider
@@ -19,6 +21,10 @@ const UserStore = (prop) => {
         setBoards,
         index,
         setIndex,
+        isLogin,
+        setIsLogin,
+        userInfo,
+        setUserInfo,
       }}
     >
       {prop.children}

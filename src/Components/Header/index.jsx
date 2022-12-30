@@ -7,20 +7,14 @@ import axios from "axios";
 
 const Header = () => {
   const Navigate = useNavigate();
-  const { answer } = useContext(AnswerContext);
-  const { isHi, setIsHi, accessToken, refreshToken } =
+  const { isHi, setIsHi, setIsLogin, userInfo, setUserInfo } =
     useContext(AnswerContext);
-  const [input, setInput] = useState("");
-  const [sexy, setSexy] = useState(null);
-
-  const Tokens = {
-    accessToken: localStorage.getItem("accessToken"),
-    refreshToken: localStorage.getItem("refreshToken"),
-  };
+  const [setInput] = useState("");
 
   const logout = () => {
     localStorage.clear();
-    toast.success("로그아웃이 되었어요");
+    toast.success("로그아웃이 되었어요.");
+    setIsLogin(false);
     setIsHi(false);
   };
 
@@ -36,12 +30,13 @@ const Header = () => {
             Authorization: localStorage.getItem("accessToken"),
           },
         });
-        console.log(data);
-        localStorage.setItem("name", data.name);
-        localStorage.setItem("grade", data.grade);
         setIsHi(true);
-        console.log("swx");
-        setSexy(data);
+        setIsLogin(true);
+        console.log(data);
+        setUserInfo({
+          name: data.name,
+          grade: data.grade,
+        });
       })();
     } catch (e) {
       console.log(e);
@@ -55,7 +50,6 @@ const Header = () => {
           <S.LogoTitle
             onClick={() => {
               Navigate("/");
-              console.log("로고 클릭");
             }}
           >
             잡쥐
@@ -70,7 +64,7 @@ const Header = () => {
         <S.ButtonWrap>
           {isHi ? (
             <S.UserName>
-              {sexy?.grade} {sexy?.name}님
+              {userInfo?.grade} {userInfo?.name}님
             </S.UserName>
           ) : (
             <S.JoinButton

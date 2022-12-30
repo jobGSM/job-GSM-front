@@ -9,8 +9,20 @@ export const Bumo = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  width: 50vw;
-  height: 3000px;
+  width: 100%;
+  flex-direction: column;
+`;
+export const Voantainer = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+`;
+
+export const Vvontainer = styled.div`
+  width: 1200px;
+  height: 100px;
+  display: flex;
+  margin: 0 auto;
   flex-direction: column;
 `;
 
@@ -59,6 +71,7 @@ export const TitleWrap = styled.div`
 
 export const JobTitle = styled.p`
   font-size: 30px;
+  margin-bottom: 30px;
 `;
 
 export const JobsWrap = styled.div`
@@ -70,20 +83,19 @@ export const JobsWrap = styled.div`
 `;
 
 export const BoardWrap = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-column-gap: auto;
+  grid-gap: 20px 30px;
   width: 100%;
-  height: 100%;
   margin: 0 auto;
-  justify-content: space-around;
-
-  flex-wrap: wrap;
-  align-content: flex-start;
 `;
 
 export const Board = styled.div`
-  width: 300px;
-  margin: 20px 0;
+  width: 100%;
   height: 200px;
+  margin: 0 auto;
   border-radius: 30px;
   border: 3px solid #00a8ff;
   text-align: center;
@@ -92,7 +104,7 @@ export const Board = styled.div`
 
 export const BoardTitle = styled.p`
   font-size: 20px;
-  padding: 10px 0;
+  padding: 6px 0;
   color: #00a8ff;
 `;
 

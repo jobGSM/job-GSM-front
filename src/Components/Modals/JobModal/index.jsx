@@ -14,32 +14,38 @@ const JobModal = ({ setAddJob }) => {
   const [boardTitle, setBoardTitle] = useState("");
   const [boardContent, setBoardContent] = useState("");
   const [boardApplicant, setBoardApplicant] = useState();
-  const [isInput, setIsInput] = useState(false);
-  const boardWriter = localStorage.getItem("name");
-  const boardGrade = localStorage.getItem("grade");
   const boardStartDate = bboardStartDate.toLocaleDateString();
   const boardEndDate = bboardEndDate.toLocaleDateString();
-  const { boards, setBoards } = useContext(AnswerContext);
+  const { boards, setBoards, userInfo } = useContext(AnswerContext);
+
   const request = async () => {
-    await axios({
-      url: "http://10.82.19.102:8080/board", // 통신할 웹문서
-      method: "post", // 통신할 방식
-      data: postJobData,
-    });
+    try {
+      await axios({
+        url: "http://10.82.19.102:8080/board", // 통신할 웹문서
+        method: "post", // 통신할 방식
+        data: postJobData,
+      });
+      toast.success("공고가 성공적으로 올라갔어요.");
+      setBoards([...boards, postJobData]);
+      setAddJob(false);
+    } catch (error) {
+      error.response.status === 401
+        ? toast.error("다시 로그인 해주세요.")
+        : toast.error("오류가 발생하였어요.");
+    }
   };
 
-  const boardInformation = async () => {
-    const { data } = await axios({
-      url: "http://10.82.19.102:8080/board/boards", // 통신할 웹문서
-      method: "get",
-    });
-    console.log("하이");
-    console.log(data);
-    setBoards(data);
-  };
+  // const boardInformation = async () => {
+  //   const { data } = await axios({
+  //     url: "http://10.82.19.102:8080/board/boards", // 통신할 웹문서
+  //     method: "get",
+  //   });
+  //   console.log(data);
+  //   setBoards(data);
+  // };
   const postJobData = {
-    boardWriter,
-    boardGrade,
+    boardWriter: userInfo.name,
+    boardGrade: userInfo.grade,
     boardTitle,
     boardContent,
     boardApplicant,
@@ -55,15 +61,12 @@ const JobModal = ({ setAddJob }) => {
       bboardStartDate === "" ||
       boardApplicant === ""
     ) {
-      toast.error("비어있는 칸이 있어요");
+      toast.error("비어있는 칸이 있어요.");
     } else {
-      toast.success("공고가 성공적으로 올라갔어요.");
       request();
-      setBoards([...boards, postJobData]);
-      setAddJob(false);
     }
   };
-  console.log(boardWriter, boardGrade);
+
   return (
     <>
       <ToastContainer />
@@ -113,7 +116,6 @@ const JobModal = ({ setAddJob }) => {
               selected={bboardStartDate}
               onChange={(date) => {
                 setBoardStartDate(date);
-                console.log(date.toLocaleDateString("ko-KR"));
               }}
               selectsStart
               startDate={bboardStartDate}
@@ -128,7 +130,6 @@ const JobModal = ({ setAddJob }) => {
               selected={bboardEndDate}
               onChange={(date) => {
                 setBoardEndDate(date);
-                console.log(date.toLocaleDateString("ko-KR"));
               }}
               selectsEnd
               startDate={bboardStartDate}

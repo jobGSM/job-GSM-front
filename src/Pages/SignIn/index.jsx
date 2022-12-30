@@ -10,9 +10,7 @@ const SignIn = () => {
   const Navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userSave, setUserSave] = useState(false);
-  const { setAnswer, setIsHi, setAccessToken, setRefreshToken } =
-    useContext(AnswerContext);
+  const { setIsHi } = useContext(AnswerContext);
 
   const loginData = {
     email,
@@ -34,14 +32,8 @@ const SignIn = () => {
       data: loginData,
       withCredentials: true,
     });
-    console.log("hello");
-    console.log(data);
     localStorage.setItem("accessToken", data.accessToken);
     localStorage.setItem("refreshToken", data.refreshToken);
-    console.log(
-      localStorage.getItem("accessToken"),
-      localStorage.getItem("refreshToken")
-    );
     setIsHi(true);
     isInput();
   };
@@ -70,20 +62,19 @@ const SignIn = () => {
             ></S.UserInputPassword>
             <S.SignUpButton
               onClick={async () => {
-                console.log(loginData);
                 await request();
 
                 Navigate("/");
               }}
             >
-              잡쥐 시작하기
+              로그인
             </S.SignUpButton>
             <S.MoveSignUp
               onClick={() => {
                 Navigate("/signUp");
               }}
             >
-              아직 회원이 아니신가요?
+              잡쥐 회원이 아니신가요?
             </S.MoveSignUp>
           </S.InputWrap>
         </S.SignInBox>

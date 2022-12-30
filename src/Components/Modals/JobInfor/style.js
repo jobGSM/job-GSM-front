@@ -44,14 +44,14 @@ export const JObTitle = styled.p`
 `;
 
 export const ShowBoardContent = styled.div`
-  width: 80%;
   margin: 0 auto;
-  height: 80%;
-
+  height: 70%;
+  align-items: center;
   text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 40px;
+  flex-direction: column;
 `;
 
 export const BoardStory = styled.p`
@@ -70,4 +70,25 @@ export const CloseJobInfor = styled.button`
 
 export const FooterP = styled.p`
   font-size: 20px;
+`;
+
+// export const DDiv = styled.div`
+//   width: 100%;
+//   height: 10vw;
+//   display: flex;
+//   align-items: center;
+//   background-color: aqua;
+// `;
+
+export const JoinButton = styled.button`
+  width: 8vw;
+  height: 3vw;
+  background-color: #00a8ff;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 20px;
 `;

@@ -131,8 +131,17 @@ export const Truetitle = styled.p`
 `;
 
 export const EmailCheckButton = styled.button`
-  width: 2vw;
+  width: 2.5vw;
   height: 2vw;
+  cursor: pointer;
+  background-color: #00a8ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  &:hover {
+    color: #00a8ff;
+    background-color: #fff;
+  }
 `;
 
 export const NormalDiv = styled.div`
@@ -158,20 +167,30 @@ export const CheckEmail = styled.div`
 `;
 
 export const CheckEmailTitle = styled.p`
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
   font-size: 30px;
 `;
 
 export const CheckEmailCode = styled.input`
-  margin-top: 20px;
+  text-align: center;
+  margin-top: 30px;
   width: 200px;
   height: 40px;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 20px;
 `;
 
 export const CheckEmailButton = styled.button`
-  width: 150px;
-  height: 30px;
+  width: 4vw;
+  height: 2vw;
+  background-color: #00a8ff;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const EmailDiv = styled.div`
@@ -190,8 +209,9 @@ export const Diiv = styled.div`
 `;
 
 export const Bbutton = styled.button`
-  width: 30px;
-  height: 30px;
+  position: absolute;
+  top: 17px;
+  right: 1vw;
   border: none;
   color: #00a8ff;
   background-color: #fff;
