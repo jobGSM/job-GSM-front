@@ -32,7 +32,7 @@ const Header = () => {
         });
         setIsHi(true);
         setIsLogin(true);
-        console.log(data);
+
         setUserInfo({
           name: data.name,
           grade: data.grade,

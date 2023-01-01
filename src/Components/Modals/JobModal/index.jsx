@@ -20,6 +20,8 @@ const JobModal = ({ setAddJob }) => {
 
   const request = async () => {
     try {
+      console.log(userInfo);
+      console.log(postJobData);
       await axios({
         url: "http://10.82.19.102:8080/board", // 통신할 웹문서
         method: "post", // 통신할 방식

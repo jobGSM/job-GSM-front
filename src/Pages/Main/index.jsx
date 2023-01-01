@@ -23,7 +23,9 @@ const Main = () => {
 
   return (
     <>
-      {showBox && <JobInfor setShowBox={setShowBox}></JobInfor>}
+      {showBox && (
+        <JobInfor setShowBox={setShowBox} showBox={showBox}></JobInfor>
+      )}
       {addJob && <JobModal setAddJob={setAddJob}>X</JobModal>}
       <Header />
       <S.Bumo>
